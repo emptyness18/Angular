@@ -209,6 +209,7 @@
     <Content Include="Test1.aspx" />
     <Content Include="Test2.aspx" />
     <Content Include="Test3.aspx" />
+    <Content Include="Test4.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -393,6 +394,13 @@
     </Compile>
     <Compile Include="Test3.aspx.designer.cs">
       <DependentUpon>Test3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Test4.aspx.cs">
+      <DependentUpon>Test4.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test4.aspx.designer.cs">
+      <DependentUpon>Test4.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

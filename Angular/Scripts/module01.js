@@ -12,3 +12,11 @@ myModule.filter('stripDashes', function () {
         //return txt.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase() });
     };
 });
+
+myModule.controller('productDetail', function ($scope) {
+    $scope.isHidden = true;
+
+    $scope.showHideColors = function () {
+        $scope.isHidden = !$scope.isHidden;
+    };
+});
