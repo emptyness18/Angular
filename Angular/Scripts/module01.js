@@ -56,3 +56,25 @@ myModule.directive('colorList2', function () {
         }
     };
 });
+
+myModule.controller('serviceController', function ($scope, $window, $location, $document) {
+    $scope.winWidth = $window.innerWidth;
+    $scope.url = $location.absUrl();
+    $scope.title = $document[0].title;
+});
+
+myModule.factory("dateTimeService", function () {
+    var dateTimeSvc = {};
+    dateTimeSvc.getDate = function () {
+        return new Date().toDateString();
+    };
+    dateTimeSvc.getTime = function () {
+        return new Date().toTimeString();
+    };
+    return dateTimeSvc;
+});
+
+myModule.controller('dateTimeController', function ($scope, dateTimeService) {
+    $scope.theDate = dateTimeService.getDate();
+    $scope.theTime = dateTimeService.getTime();
+});
