@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+        <style>
+            body, input, select {
+                font: normal 16px/1.4 Georgia;
+            }
+
+                input:not([type='checkbox']), select {
+                    width: 250px;
+                }
+
+            input, select {
+                padding: 5px;
+                margin-top: 12px;
+            }
+
+                input[name='email'].ng-dirty.ng-invalid-email {
+                    color: red;
+                }
+
+                input[name='email'].ng-dirty.ng-valid-email {
+                    color: green;
+                }
+
+            form span, .error {
+                color: red;
+            }
+        </style>
+        <div id="myApp" ng-app="myModule">
+            <div ng-controller="SignUpController">
+                <form name="registrationForm" novalidate ng-submit="person.register()">
+                    <div ng-show="showSuccessMessage">
+                        Thank you.
+                    </div>
+                    <div ng-show="showErrorMessage">
+                        Error <br />
+                    </div>
+                    <input type="text" placeholder="First Name" name="firstName" ng-model="person.firstName" required />
+                    <br />
+                    <input type="text" placeholder="Last Name" name="lastName" ng-model="person.lastName" required />
+                    <br />
+                    <input type="email" placeholder="Email" name="email" ng-model="person.email" required />
+                    <br />
+                    <select name="research" ng-model="levels" ng-options="obj.label for obj in person.channels" required>
+                        <option value="">Where did you hear about us?</option>
+                    </select>
+                    <br />
+                    <input ng-model="person.newsletterOptIn" type="checkbox" name="newsletterOptIn" id="newsletterOptIn" value="newsletterOptIn" />
+                    <label for="newsletterOptIn">Receive monthly newsletter</label>
+                    <br />
+                    <input ng-disabled="working" type="submit" value="Register" />
+                    <span ng-show="working" style="padding-left:10px">
+                        <img src="http://97irratia.info/airtime-widgets/images/loading.gif" />
+                    </span>
+                </form>
+            </div>
+        </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
+    <script src="Scripts/module01.js?v=01"></script>
+    <script src="Scripts/signup-module.js?v=01"></script>
+
+</body>
+</html>

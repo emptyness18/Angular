@@ -21,8 +21,9 @@
             color:red;
         }
     </style>
-        <div ng-app="myModule" ng-controller="signUpController">
-            <form name="registrationForm" ng-submit="person.register()">
+        <div id="myApp" ng-app="myModule" >
+            <div ng-controller="SignUpController">
+            <form name="registrationForm" novalidate ng-submit="person.register()">
                 <div ng-show="showSuccessMessage">
                     Thank you.
                 </div>
@@ -35,7 +36,7 @@
                 <br />
                 <input type="email" placeholder="Email" name="email" ng-model="person.email" required />
                 <br />
-                <select name="level" ng-model="person.levels" ng-options="x.label as x.value from x in person.channelss" required>
+                <select name="research" ng-model="levels" ng-options="obj.label for obj in person.channels" required>
                     <option value="">Where did you hear about us?</option>
                 </select>
                 <br />
@@ -47,5 +48,6 @@
                     <img src="http://97irratia.info/airtime-widgets/images/loading.gif" />
                 </span>
             </form>
+            </div>
         </div>
 </asp:Content>

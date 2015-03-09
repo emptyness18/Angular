@@ -7,8 +7,9 @@
     return dataStore;
 });
 
-myModule.controller("signUpController", function ($scope, dataService) {
+myModule.controller("SignUpController", function ($scope, dataService) {
     var person = [];
+    person.levels = "";
     person.newsletterOptIn = false;
     person.channels = [
         { value: "television", label: "Television" },
@@ -59,6 +60,8 @@ myModule.controller("signUpController", function ($scope, dataService) {
 
             $scope.doShow = true;
         }
-
+        return false;
     }
+
+    $scope.person = person;
 });
