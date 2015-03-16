@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="app">
+<head>
+    <title>App Route</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.9/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.9/angular-animate.js"></script>
+    <script>
+        var app = angular.module('app', ['ngRoute']);
+
+        app.config(function ($routeProvider) {
+            $routeProvider
+                .when('/', {
+                    templateUrl: 'pages/home.html',
+                    controller: 'homeController'
+                })
+                .when('/about', {
+                    templateUrl: 'pages/about.html',
+                    controller: 'aboutController'
+                })
+                .when('/contact/:subject', {
+                    templateUrl: 'pages/contact.html',
+                    controller: 'contactController'
+                })
+                .otherwise({
+                    templateUrl: 'pages/routeNotFound.html',
+                    controller: 'notFoundController'
+                });
+        });
+        
+        app.controller('homeController', function ($scope) {
+            $scope.message = 'Welcome to my home page!';
+        });
+
+        app.controller('aboutController', function ($scope) {
+            $scope.message = 'Find out more about me.';
+        });
+
+        app.controller('contactController', function ($scope, $routeParams) {
+            var subject = '';
+            if ($routeParams["subject"] == "learn") {
+                subject = 'I want to learn more about your services.'
+            }
+            else if ($routeParams["subject"] == "quote") {
+                subject = 'I would like to get a free quote.'
+            }
+            $scope.subject = subject;
+        });
+
+        app.controller('notFoundController', function ($scope, $location) {
+            $scope.message = 'There seems to be a problem finding the page you wanted';
+            $scope.path = $location.path();
+        });
+
+    </script>
+</head>
+<body ng-controller="homeController">
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">My website</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
+                <li><a href="#about"><i class="fa fa-shield"></i>About</a></li>
+                <li><a href="#contact"><i class="fa fa-comment"></i>Contact</a></li>
+            </ul>
+
+        </nav>
+    </header>
+    <div id="main">
+        <div ng-view></div>
+    </div>
+</body>
+</html>
